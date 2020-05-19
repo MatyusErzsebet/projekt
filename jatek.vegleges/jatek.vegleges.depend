@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1589906909 source:d:\sapi\adatszerkezetek es algoritmusok\jatek.vegleges\main.c
+	<stdio.h>
+	<stdlib.h>
+	<Windows.h>
+	<time.h>
+	<conio.h>
+	"jatek.h"
+	"jatek.c"
+
+1589903180 d:\sapi\adatszerkezetek es algoritmusok\jatek.vegleges\jatek.h
+	<Windows.h>
+	<time.h>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+
+1589907663 d:\sapi\adatszerkezetek es algoritmusok\jatek.vegleges\jatek.c
+	"jatek.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<Windows.h>
+	<time.h>
+
