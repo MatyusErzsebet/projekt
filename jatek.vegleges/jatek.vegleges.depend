@@ -23,3 +23,27 @@
 	<Windows.h>
 	<time.h>
 
+1589918078 source:c:\users\betty\documents\github\projekt\jatek.vegleges\main.c
+	<stdio.h>
+	<stdlib.h>
+	<Windows.h>
+	<time.h>
+	<conio.h>
+	"jatek.h"
+	"jatek.c"
+
+1589903180 c:\users\betty\documents\github\projekt\jatek.vegleges\jatek.h
+	<Windows.h>
+	<time.h>
+	<conio.h>
+	<stdio.h>
+	<stdlib.h>
+
+1589918078 c:\users\betty\documents\github\projekt\jatek.vegleges\jatek.c
+	"jatek.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<Windows.h>
+	<time.h>
+

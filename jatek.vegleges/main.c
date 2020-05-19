@@ -12,7 +12,7 @@
 int main()
 {
     printf("Milyen szinten szeretned kezdeni a jatekot?\n kezdo:1\n kozepes:2\n halado:3\n");
-    int option;
+    int option;//kivalaszthatjuk hogy melyik szinttol szeretnenk kezdeni a jatekot
     scanf("%i", &option);
     jatek(option);
 

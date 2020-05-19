@@ -34,32 +34,32 @@ void kirajzolPalya(char** palya)
 {   int i,j;
 	for ( i = 0; i < hossz; ++i) {
 		for (j = 0; j < szel; ++j) {
-			if (palya[i][j] == '3' && (i == 0 || i == hossz - 1)) {
+			if (palya[i][j] == '3' && (i == 0 || i == hossz - 1)) { //palya szele
 				printf("%c",177);
 			}
-			else if (palya[i][j] == '3' || j==szel-1) {
+			else if (palya[i][j] == '3' || j==szel-1) { //palya szele
 				printf("%c",177);
 			}
-                else if (palya[i][j] == '3' || j==0) {
+                else if (palya[i][j] == '3' || j==0) { //palya szele
 				printf("%c",177);
                 }
-			if (palya[i][j] == '0') {
+			if (palya[i][j] == '0') { //jarhato ut
 				printf(" ");
 			}
-			if (palya[i][j] == '1') {
+			if (palya[i][j] == '1') { //fal
 				printf("%c", 240);
 			}
-			if (palya[i][j] == 'R') {
+			if (palya[i][j] == 'R') { //nagyobb akadaly/"szorny"
 				printf("X");
 			}
-			if (palya[i][j] == 'P') {
+			if (palya[i][j] == 'P') { //a jatekos karaktere
 				printf("P");
 			}
-			if (palya[i][j] == '$') {
+			if (palya[i][j] == '$') { //cel mezo
 				printf("$");
 			}
 
-			if (palya[i][j] == 'F') {
+			if (palya[i][j] == 'F') { //bonusz elet
 				printf("F");
 			}
 		}
@@ -75,7 +75,7 @@ void jatek(int szint)
 	startTime = time(NULL);
 	int index = 1;
 	char** palya;
-	if(szint==1)
+	if(szint==1) //a megadott szintnek megfelelo palyat nyitjuk meg a megfelelo allomanybol
 	palya = beolvasPalya("kezdo.txt");
 	else if(szint==2)
         palya = beolvasPalya("kozepes.txt");
@@ -84,12 +84,12 @@ void jatek(int szint)
 	int elozoX, elozoY;
 	int jatekosX = 1, jatekosY = 1;
 	palya[jatekosX][jatekosY] = 'P';
-	//kirajzolPalya(palya);
-    int szornyX,szornyY;
+
+    int szornyX,szornyY;//random helyre generaljuk a szornyet ugyelve arra hogy ez ne legyen a palya szele
         szornyX = 2 + rand() % (hossz - 3);
         szornyY = 1 + rand() % (szel - 2);
     palya[szornyX][szornyY] = 'R';
-    palya[hossz-2][szel-2]='$';
+    palya[hossz-2][szel-2]='$';//ha a cel mezore generalna szornyet akkor azt felulirjuk
 	while (1) {
         printf("elet: %i\n", elet);
 		currentTime = time(NULL);
@@ -97,16 +97,16 @@ void jatek(int szint)
 		char option = getch();
         elozoX = jatekosX;
         elozoY = jatekosY;
-        if (option == 'd')
+        if (option == 'd') //jobbra lepes
         {
             jatekosY++;
-            if(palya[jatekosX][jatekosY]=='1'|| palya[jatekosX][jatekosY]=='3')
+            if(palya[jatekosX][jatekosY]=='1'|| palya[jatekosX][jatekosY]=='3') //ha falba vagy a palya szelebe utkoznenk akkor eletet veszitunk
             {
                 jatekosY--;
                 elet--;
             }
         }
-        else if (option == 's')
+        else if (option == 's') //lefele lepes
         {
             jatekosX++;
             if(palya[jatekosX][jatekosY]=='1'|| palya[jatekosX][jatekosY]=='3')            {
@@ -114,7 +114,7 @@ void jatek(int szint)
                 elet--;
             }
         }
-            else if (option == 'a')
+            else if (option == 'a') //balra lepes
             {
                 jatekosY--;
             if(palya[jatekosX][jatekosY]=='1'|| palya[jatekosX][jatekosY]=='3')            {
@@ -122,7 +122,7 @@ void jatek(int szint)
                 elet--;
             }
             }
-            else if (option == 'w')
+            else if (option == 'w') //felfele lepes
             {
                 jatekosX--;
                 if(palya[jatekosX][jatekosY]=='1'|| palya[jatekosX][jatekosY]=='3')
@@ -149,14 +149,14 @@ void jatek(int szint)
                 palya[jatekosX][jatekosY] = 'P';
                 elet--;
             }
-            else if (palya[jatekosX][jatekosY] == 'F')   //food-kap egy plusz eletet
+            else if (palya[jatekosX][jatekosY] == 'F')   //"food"-kap egy plusz eletet
             {
                 palya[jatekosX][jatekosY] = 'P';
                 palya[elozoX][elozoY] = '0';
                 elet++;
             }
 
-            else if (palya[jatekosX][jatekosY] == 'R')   //szorny->vege
+            else if (palya[jatekosX][jatekosY] == 'R')   //szorny->vege a jateknak
             {
                 printf("vesztettel, a jateknak vege ");
                 exit(0);
@@ -168,17 +168,17 @@ void jatek(int szint)
                 if(szint<3)
                 {
                     printf("gratulalok, celba ertel %i darab elettel\n", elet);
-                    jatek(szint + 1);
+                    jatek(szint + 1);//ha celba ertunk lephetunk a kovetkezo szintre
                 }
                 else
-                {printf("Gratulalok megnyerted a jatekot");
+                {printf("Gratulalok megnyerted a jatekot"); //ha teljesitettuk mindharom szintet akkor vege a jateknak
                     Sleep(300);
                     exit(1);
                 }
             }
             if(elet==0)
             {
-                printf("vesztettel, a jateknak vege ");
+                printf("vesztettel, a jateknak vege ");//ha az osszes eletunk elfogyott akkor vege a jateknak
                 exit(0);
             }
 
